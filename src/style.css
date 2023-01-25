@@ -1,0 +1,29 @@
+body {
+  /*background: linear-gradient(to top, #09203f 0%, #537895 100%);*/
+  background: navy;
+}
+
+.card .content {
+  margin: 0 auto;
+}
+
+.current-weather-details {
+  position: relative;
+  left: 250px;
+  top: -100px;
+}
+
+.forecast {
+  display: block;
+  text-align: center;
+}
+
+.current-temperature-display {
+  font-size: 40px;
+}
+
+.current-temperature-display .units {
+  font-size: 20px;
+  position: relative;
+  top: -18px;
+}

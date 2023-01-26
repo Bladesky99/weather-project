@@ -16,70 +16,73 @@
   </head>
   <body>
     <div class="container">
-      <div class="card content mt-5" style="width: 40rem">
-        <div class="card-body">
-          <form class="search-form" id="search-form">
+      <div class="shadow p-3 mb-5 bg-white rounded content">
+        <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="search"
+                placeholder="Search "
+                autofocus="on"
+                autocomplete="off"
+                id="search-input"
+                class="form-control shadow-sm"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm"
+              />
+            </div>
+            <div class="col-3">
+              <button
+                type="button"
+                class="btn btn-success"
+                id="current-location-button"
+              >
+                Location
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="current-weather">
+          <h1 id="city-name">Eindhoven</h1>
+          <div class="dayAndTime"></div>
+
+          <div class="current-temperature-display">
             <div class="row">
               <div class="col-6">
-                <input
-                  type="search"
-                  placeholder="Search "
-                  autofocus="on"
-                  autocomplete="off"
-                  id="search-input"
-                  class="form-control shadow-sm"
-                />
-              </div>
-              <div class="col-3">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="form-control btn btn-primary shadow-sm"
-                />
-              </div>
-              <div class="col-3">
-                <button
-                  type="button"
-                  class="btn btn-success"
-                  id="current-location-button"
-                >
-                  Location
-                </button>
-              </div>
-            </div>
-          </form>
-
-          <div class="current-weather">
-            <h1 id="city-name">Eindhoven</h1>
-            <div class="dayAndTime"></div>
-            <div class="current-temperature-display">
-              <div class="row">
-                <div class="col-6">
-                  <div class="d-flex weather-temperature">
-                    <img src="" alt="Clear" id="icon" />
-                    <div>
-                      <strong id="temperature"></strong
-                      ><span class="units"> °C</span>
-                    </div>
+                <div class="d-flex weather-temperature">
+                  <img
+                    src="https://icons-for-free.com/iconfiles/png/512/sun+sunny+weather+icon-1320196635525068067.png"
+                    alt="Clear"
+                    id="icon"
+                  />
+                  <div>
+                    <strong id="temperature">19</strong
+                    ><span class="units"> °C | °F</span>
                   </div>
                 </div>
-                <div class="col-6">
-                  <ul>
-                    <li>Humidity: <span id="humidity"></span>%</li>
-                    <li>Wind: <span id="wind"></span> m/h</li>
-                    <li>Description: <span id="description"></span></li>
-                  </ul>
-                </div>
+              </div>
+              <div class="col-6 weather-details">
+                <ul>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Wind: <span id="wind"></span> m/h</li>
+                  <li>Description: <span id="description"></span></li>
+                </ul>
               </div>
             </div>
           </div>
-          <a
-            class="netlify-link"
-            href="https://63d19a3a8ad17f03ba465c8d--rococo-chaja-875284.netlify.app"
-            >Visit my site on Netlify</a
-          >
         </div>
       </div>
+      <a
+        class="netlify-link"
+        href="https://63d19a3a8ad17f03ba465c8d--rococo-chaja-875284.netlify.app"
+        >Visit my site on Netlify</a
+      >
     </div>
     <script src="javascript/app.js"></script>
   </body>

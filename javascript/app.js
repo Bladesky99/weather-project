@@ -1,3 +1,5 @@
+let apiKey = "a34fc055166b4t2af2aa49acfo60673a";
+
 function formatDayAndTime() {
   let now = new Date();
 
@@ -29,29 +31,32 @@ function formatDayAndTime() {
 }
 
 function displayTemperature(response) {
+  console.log(response);
   let cityElement = document.querySelector("#city-name");
-  cityElement.innerHTML = response.data.name;
+  cityElement.innerHTML = response.data.city;
 
   let temperature = document.querySelector("#temperature");
-  let roundedTemperature = Math.round(response.data.main.temp);
+  let roundedTemperature = Math.round(response.data.temperature.current);
   temperature.innerHTML = `${roundedTemperature}`;
 
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.response.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.condition.description;
 
-  console.log(temperature);
+  document
+    .querySelector("#icon")
+    .iconElement.setAttribute("src", response.data.condition.icon_url);
 }
 
 function search(event) {
   event.preventDefault();
 
-  let apiKey = "fda3688b1db05987dd5d07c237aecfba";
   let cityInput = document.querySelector("#search-input");
-  let cityNameApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  let cityNameApiUrl = `https://api.shecodes.io/weather/v1/current?query=london&key=a34fc055166b4t2af2aa49acfo60673a&units=metric`;
   axios.get(`${cityNameApiUrl}`).then(displayTemperature);
 }
 
@@ -77,10 +82,9 @@ function convertToFahrenheit(event) {
 // fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function retrievePosition(position) {
-  let apiKey = "fda3688b1db05987dd5d07c237aecfba";
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let currentLocationApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let currentLocationApiUrl = `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
   axios.get(`${currentLocationApiUrl}`).then(displayTemperature);
 }
 

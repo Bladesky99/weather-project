@@ -1,6 +1,7 @@
 body {
   /*background: linear-gradient(to top, #09203f 0%, #537895 100%);*/
   background: navy;
+  font-size: 18px;
 }
 
 .card .content {

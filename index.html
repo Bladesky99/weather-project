@@ -43,7 +43,7 @@
                   class="btn btn-success"
                   id="current-location-button"
                 >
-                  Current location
+                  Location
                 </button>
               </div>
             </div>
@@ -53,25 +53,25 @@
             <h1 id="city-name">Eindhoven</h1>
             <div class="dayAndTime"></div>
             <div class="current-temperature-display">
-              <span class="current-weather-emoji" id="current-weather-emoji"
-                >🌧️</span
-              >
-              <span class="temperature" id="temperature">19</span>
-              <span class="units" id="units">
-                <a href="#" id="celsius-link">°C</a> |
-                <a href="#" id="fahrenheit-link">°F</a></span
-              >
+              <div class="row">
+                <div class="col-6">
+                  <div class="d-flex weather-temperature">
+                    <img src="" alt="Clear" id="icon" />
+                    <div>
+                      <strong id="temperature"></strong
+                      ><span class="units"> °C</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <ul>
+                    <li>Humidity: <span id="humidity"></span>%</li>
+                    <li>Wind: <span id="wind"></span> m/h</li>
+                    <li>Description: <span id="description"></span></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="current-weather-details">
-            <p>
-              Humidity: <span id="humidity">80%</span>
-              <br />
-              Wind: <span id="wind">SW5</span>
-              <br />
-              Description: <span id="description">Cloudy</span>
-            </p>
           </div>
           <a
             class="netlify-link"

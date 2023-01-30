@@ -46,6 +46,15 @@ body {
   list-style: none;
 }
 
+.weather-forecast {
+  text-align: center;
+  font-size: 16px;
+}
+
+.forecast-temp-min {
+  opacity: 0.8;
+}
+
 .gitHub-link {
   position: relative;
   left: 258px;

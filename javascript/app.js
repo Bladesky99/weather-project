@@ -30,6 +30,12 @@ function formatDayAndTime() {
   currentDayAndTime.innerHTML = `${day} ${time}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   console.log(response);
   let cityElement = document.querySelector("#city-name");
@@ -54,6 +60,8 @@ function displayTemperature(response) {
     "src",
     response.data.condition.icon_url
   );
+
+  getForecast(response.data.coordinates);
 }
 
 function search(event) {
@@ -85,13 +93,6 @@ function convertToCelsius(event) {
   fahrenheitLink.classList.remove("active");
 }
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-let celsiusLink = document.querySelector("#celsius-link");
-let celsiusTemperature = null;
-
-celsiusLink.addEventListener("click", convertToCelsius);
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
 function retrievePosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -104,11 +105,49 @@ function showWeatherForCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2 weather-forecast-day">
+      ${day}
+      <div class="forecast-icon">
+        <img
+          class=""
+          src="https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/CloudyV3.svg"
+          alt="forecast-icon"
+          width="30"
+        />
+      </div>
+      <div class="forecast-temperatures">
+        <span class="forecast-temp-max">18°</span>
+        <span class="forecast-temp-min">12°</span>
+      </div>
+    </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+let celsiusLink = document.querySelector("#celsius-link");
+let celsiusTemperature = null;
+
+celsiusLink.addEventListener("click", convertToCelsius);
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", showWeatherForCurrentLocation);
 
-formatDayAndTime();
-navigator.geolocation.getCurrentPosition(retrievePosition);
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
+
+formatDayAndTime();
+navigator.geolocation.getCurrentPosition(retrievePosition);
+displayForecast();

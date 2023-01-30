@@ -100,6 +100,7 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", showWeatherForCurrentLocation);
 
 formatDayAndTime();
+navigator.geolocation.getCurrentPosition(retrievePosition);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);

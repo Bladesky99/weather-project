@@ -105,28 +105,37 @@ function showWeatherForCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+function formatForecastDay(date) {
+  let date = new Date(date * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Tue"];
+}
 
-  days.forEach(function (day) {
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastData = response.data.daily;
+
+  let forecastHTML = `<div class="row">`;
+  forecastData.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2 weather-forecast-day">
-      ${day}
+      ${forecastDay.dt}
       <div class="forecast-icon">
         <img
           class=""
-          src="https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/CloudyV3.svg"
-          alt="forecast-icon"
+          src="${forecastDay.condition.icon_url}"
+          alt="${forecastDay.condition.icon}"
           width="30"
         />
       </div>
       <div class="forecast-temperatures">
-        <span class="forecast-temp-max">18°</span>
-        <span class="forecast-temp-min">12°</span>
+        <span class="forecast-temp-max">${Math.round(
+          forecastDay.temperature.maximum
+        )}°</span>
+        <span class="forecast-temp-min">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</span>
       </div>
     </div>`;
   });

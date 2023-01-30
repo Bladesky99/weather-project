@@ -70,22 +70,26 @@ function convertToFahrenheit(event) {
   let temperatureElement = document.querySelector("#temperature");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
-//To use when appropriate lesson has been taught
+function convertToCelsius(event) {
+  event.preventDefault();
 
-// function convertToCelsius(event) {
-//   event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
-//   let temperatureElement = document.querySelector("#temperature");
-//   temperatureElement.innerHTML = 19;
-// }
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusLink = document.querySelector("#celsius-link");
 let celsiusTemperature = null;
 
-// celsiusLink.addEventListener("click", convertToCelsius);
+celsiusLink.addEventListener("click", convertToCelsius);
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function retrievePosition(position) {

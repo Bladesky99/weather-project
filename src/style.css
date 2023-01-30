@@ -33,6 +33,15 @@ body {
   top: -20px;
 }
 
+.units .active {
+  color: black;
+  cursor: none;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+
 .weather-details ul {
   list-style: none;
 }

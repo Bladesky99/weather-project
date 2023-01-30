@@ -35,8 +35,10 @@ function displayTemperature(response) {
   let cityElement = document.querySelector("#city-name");
   cityElement.innerHTML = response.data.city;
 
+  celsiusTemperature = response.data.temperature.current;
+
   let temperature = document.querySelector("#temperature");
-  let roundedTemperature = Math.round(response.data.temperature.current);
+  let roundedTemperature = Math.round(celsiusTemperature);
   temperature.innerHTML = `${roundedTemperature}`;
 
   document.querySelector("#humidity").innerHTML =
@@ -66,7 +68,8 @@ function search(event) {
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 66;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 //To use when appropriate lesson has been taught
@@ -78,11 +81,12 @@ function convertToFahrenheit(event) {
 //   temperatureElement.innerHTML = 19;
 // }
 
-// let fahrenheitLink = document.querySelector("#fahrenheit-link");
-// let celsiusLink = document.querySelector("#celsius-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+let celsiusLink = document.querySelector("#celsius-link");
+let celsiusTemperature = null;
 
 // celsiusLink.addEventListener("click", convertToCelsius);
-// fahrenheitLink.addEventListener("click", convertToFahrenheit);
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function retrievePosition(position) {
   let latitude = position.coords.latitude;

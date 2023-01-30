@@ -105,10 +105,12 @@ function showWeatherForCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-function formatForecastDay(date) {
-  let date = new Date(date * 1000);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Tue"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
 function displayForecast(response) {
@@ -120,7 +122,7 @@ function displayForecast(response) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2 weather-forecast-day">
-      ${forecastDay.dt}
+      ${formatDay(forecastDay.dt)}
       <div class="forecast-icon">
         <img
           class=""

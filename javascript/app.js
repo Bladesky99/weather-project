@@ -118,11 +118,12 @@ function displayForecast(response) {
   let forecastData = response.data.daily;
 
   let forecastHTML = `<div class="row">`;
-  forecastData.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2 weather-forecast-day">
-      ${formatDay(forecastDay.dt)}
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 weather-forecast-day">
+      ${formatDay(forecastDay.time)}
       <div class="forecast-icon">
         <img
           class=""
@@ -140,6 +141,7 @@ function displayForecast(response) {
         )}°</span>
       </div>
     </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -161,4 +163,3 @@ searchForm.addEventListener("submit", search);
 
 formatDayAndTime();
 navigator.geolocation.getCurrentPosition(retrievePosition);
-displayForecast();

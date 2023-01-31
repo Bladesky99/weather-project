@@ -39,7 +39,7 @@
             <div class="col-3">
               <button
                 type="button"
-                class="btn btn-success"
+                class="btn btn-success shadow-sm"
                 id="current-location-button"
               >
                 Location
@@ -49,20 +49,16 @@
         </form>
 
         <div class="current-weather">
-          <h1 id="city-name">Eindhoven</h1>
+          <h1 id="city-name"></h1>
           <div class="dayAndTime"></div>
 
           <div class="current-temperature-display">
             <div class="row">
               <div class="col-6">
                 <div class="d-flex weather-temperature">
-                  <img
-                    src="https://icons-for-free.com/iconfiles/png/512/sun+sunny+weather+icon-1320196635525068067.png"
-                    alt="Clear"
-                    id="icon"
-                  />
+                  <img id="icon" class="icon" src="" alt="" />
                   <div>
-                    <strong id="temperature">19</strong
+                    <strong id="temperature"></strong
                     ><span class="units">
                       <a href="" id="celsius-link" class="active">°C</a> |
                       <a href="" id="fahrenheit-link">°F</a></span

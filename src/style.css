@@ -1,5 +1,29 @@
 body {
-  background: lightblue;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background-attachment: fixed;
+}
+
+.nightMode {
+  background: linear-gradient(
+    114.9deg,
+    rgb(34, 34, 34) 8.3%,
+    rgb(0, 40, 60) 41.6%,
+    rgb(0, 143, 213) 93.4%
+  );
+  background-attachment: fixed;
+}
+
+.nightMode .content {
+  background: #182759;
+  color: white;
+}
+
+.nightMode .units .active {
+  color: white;
+}
+
+.bg-gradient-dark {
+  background: rgba(24, 39, 89, 0.7);
 }
 
 .content {
@@ -58,4 +82,8 @@ body {
 .gitHub-link {
   position: relative;
   left: 258px;
+}
+
+.icon {
+  max-width: 80px;
 }

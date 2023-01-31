@@ -24,6 +24,15 @@ function formatDayAndTime() {
     return minutes;
   }
 
+  if ((hour) => 18) {
+    let body = document.querySelector("body");
+    body.classList.add("nightMode");
+
+    let content = document.querySelector(".content");
+    content.classList.remove("bg-white");
+    content.classList.add("bg-gradient-dark");
+  }
+
   let time = `${hour}:${addZero(minutes)}`;
 
   let currentDayAndTime = document.querySelector(".dayAndTime");
@@ -129,7 +138,7 @@ function displayForecast(response) {
           class=""
           src="${forecastDay.condition.icon_url}"
           alt="${forecastDay.condition.icon}"
-          width="30"
+          width="45"
         />
       </div>
       <div class="forecast-temperatures">

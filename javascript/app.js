@@ -24,13 +24,18 @@ function formatDayAndTime() {
     return minutes;
   }
 
-  if ((hour) => 18) {
+  if (hour >= 18 || hour < 6) {
     let body = document.querySelector("body");
     body.classList.add("nightMode");
 
     let content = document.querySelector(".content");
     content.classList.remove("bg-white");
     content.classList.add("bg-gradient-dark");
+  } else {
+    body.classList.remove("nightMode");
+
+    content.classList.add("bg-white");
+    content.classList.remove("bg-gradient-dark");
   }
 
   let time = `${hour}:${addZero(minutes)}`;
